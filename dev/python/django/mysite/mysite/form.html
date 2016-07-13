@@ -1,0 +1,253 @@
+<html>
+<head>
+
+    <style type="text/css">
+        .button {
+            background-color: #000000;;
+            border: none;
+            color: #ffffff;
+            padding: 25px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 11px;
+            margin: 4px 2px;
+            cursor: pointer;
+            font-size: medium;
+        }
+
+        body {
+            font-family: Avenir;
+            color: #3af7ff;
+            background-color: #1e656d;
+            background-image: url("http://www.therucker.com/images/redwood_bg0.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        h3 {
+            font-family: Futura;
+            color: white
+
+        }
+
+        #loopLength {
+
+            font-size: xx-large;
+            display: inline;
+            float: left;
+            padding-top: 7px;
+            padding-right: 130px;
+        }
+
+        #kitType {
+
+            font-size: xx-large;
+            display: inline-block:
+            float: left;
+            padding-top: 1px;
+            padding-left: 10px;
+        }
+
+        #buttons {
+            background-color: #306d2d;
+            font-size: xx-large;
+            display: inline;
+            float: left;
+        }
+
+        #bottomBar {
+            background-color: #000000;
+            padding: 1%;
+            
+        }
+
+        h1 {
+            font-family: Futura;
+            color: white;
+            display: inline;
+            float: left;
+        }
+
+        h6 {
+
+            display: inline;
+            float: left;
+            
+padding: 10px;
+        }
+
+        input[type=submit] {
+            padding: 26px 21px;
+            background: #000000;
+            color: #ffffff;
+            border: 0 none;
+            cursor: pointer;
+            font-size: medium;
+            font-weight: bold;
+            -webkit-border-radius: 0px;
+            border-radius: 0px;
+        }
+
+        p {
+            font-size: medium;
+            white-space: nowrap;
+        }
+
+        input[type=text] {
+            width: 18%;
+            padding-top: 14px;
+            padding: 2px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: none;
+            font-size: larger;
+            background-color: #306d2d;
+            color: white;
+        }
+
+        input[type=radio]:not(old) {
+
+            width: 28px;
+            margin: 0;
+            padding: 20;
+            opacity: 100;
+        }
+
+        #Header {
+            background-color: #000000;
+            font-size: xx-large;
+            padding-bottom: 30px;
+
+        }
+
+        input[type='radio']:after {
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            top: -2px;
+            left: -1px;
+            position: relative;
+            background-color: #d1d3d1;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid white;
+        }
+
+        input[type='radio']:checked:after {
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            top: -2px;
+            left: -1px;
+            position: relative;
+            background-color: #ffa500;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid white;
+        }
+
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var form = $('#form'); // contact form
+            var submit = $('#submit');  // submit button
+            var alert = $('.alert'); // alert div for show alert message
+
+            // form submit event
+            form.on('submit', function (e) {
+                e.preventDefault(); // prevent default form submit
+
+                $.ajax({
+                    url: '/inputBPM/', // form action url
+                    type: 'GET', // form submit method get/post
+                    dataType: 'html', // request type html/json/xml
+                    data: form.serialize(), // serialize form data
+                    beforeSend: function () {
+                        alert.fadeOut();
+                        submit.html('Sending....'); // change submit button text
+                    },
+                    success: function (data) {
+                        alert.html(data).fadeIn(); // fade in response data
+                        form.trigger('reset'); // reset form
+                        submit.html('Send Email'); // reset submit button text
+                    },
+                    error: function (e) {
+                        console.log(e)
+                    }
+                });
+            });
+        });
+    </script>
+
+    <title>docdrums</title>
+    <div id="Header">
+        <h1>docdrums</h1>
+        <h6>The virtual session drummer.</h6>
+    </div>
+
+
+</head>
+<body>
+<table style="width:100%">
+
+    <form action="/inputBPM/" method="get" id="form">
+        <tr>
+
+            <td width="47%" valign="top" align="right">
+                <div id="loopLength">
+                    <h3>Loop Length and BPM</h3>
+                    Loop Length (Bars):
+                    <input type="text" name="p"><br>
+                    BPM:
+                    <input type="text" name="q">
+                </div>
+            </td>
+
+            <td valign="top">
+                <div id="kitType">
+                    <h3>Kit Type</h3>
+                    <input type="radio" style="vertical-align: middle" name="Kit" value="HipHop" checked> Hip Hop<br>
+                    <input type="radio" style="vertical-align: middle" name="Kit" value="Rock"> Rock<br>
+                    <input type="radio" style="vertical-align: middle" name="Kit" value="Bongos"> Bongos<br><br><br>
+                </div>
+            </td>
+
+            <td>
+                <div id="buttons">
+                    <input type="submit" onclick="change()" value="Play" id = "Play">
+                    <input type="submit" onclick="change2()" name="Stop" class="button" value="1" id ="Stop">
+
+                </div>
+            </td>
+        </tr>
+    </form>
+
+</table>
+
+<script>
+function change() // no ';' here
+{
+    var elem = document.getElementById("Play");
+    if (elem.value=="Play") elem.value = "Pause";
+    else elem.value = "Play";
+}
+function change2() // no ';' here
+{
+    var elem = document.getElementById("Stop");
+    if (elem.value=="1") elem.value = "0";
+    else elem.value = "1";
+}
+</script>
+
+
+<br><br><br><br>
+<div id="bottomBar">
+    <h4>(ç) Rishi Srivastava</h4>
+</div>
+</body>
+
+</html>

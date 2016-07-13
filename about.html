@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style type="text/css">
+        #Header {
+            background-color: #000000;
+            font-size: xx-large;
+            padding-bottom: 30px;
+        }
+
+        ul#menu {
+            padding: 0;
+            margin-bottom: 11px;
+            align-self: right;
+            padding-top: 30px;
+            font-size: large;
+        }
+
+        ul#menu li {
+
+            padding-left:10px;
+            display: inline;
+            margin-right: 3px;
+            padding-left: 20px;
+        }
+
+        ul#menu li a {
+
+            padding: 10px 20px;
+            text-decoration: none;;
+            font-weight: bold;
+            padding-top: 10px;
+            color: white;
+            border-radius: 4px 4px 0 0;
+        }
+
+        ul#menu li a:hover {
+            color: white;
+            background-color: black;
+        }
+
+        h1 {
+            font-family: Futura;
+            color: white;
+            display: inline;
+            float: left;
+            text-shadow: 3px 3px 0 #306d2d;
+            -1 px -1px 0 #306d2d;
+            1px -1px 0 #306d2d;
+            -1 px 1px 0 #306d2d;
+            1px 1px 0 #306d2d;
+        }
+        h3 {
+            font-family: Futura;
+            color: white;
+            font-size:x-large;
+        }
+
+        h6 {
+            display: inline;
+            float: left;
+            padding: 0px;
+        }
+
+        p {
+            font-size: medium;
+            white-space: nowrap;
+        }
+        body {
+            font-family: Avenir;
+            color: #3af7ff;
+            background-color: #1e656d;
+            background-image: url("http://s33.postimg.org/a9bvksx8f/drum_Back.png");
+            background-attachment: fixed;
+        }
+
+        #mid {
+            padding-bottom: 0px;
+            font-size: xx-large;
+            padding-left:10px;
+        }
+
+        footer{
+            position: fixed; bottom: 3px; width: 99%; height: 25px; background-color: black; padding-bottom: 15px;
+        }
+    </style>
+
+    <title>clouddrums | About</title>
+
+    <div id="Header">
+        <h1>clouddrums</h1>
+        <h6>The virtual session drummer.</h6>
+    </div>
+
+    <nav id="nav01"></nav>
+</head>
+
+<body>
+
+<div id="mid">
+    <h6 style="line-height: 80%">clouddrums.com is the world's first virtual session drummer - a versatile random beat generator with endless possibilities.</h6>
+
+    <table style="width:100%; text-align: justify">
+        <tr>
+
+            <td valign="top" align="left" style="width: 33%; ">
+                <h3>Jam and Record.</h3>
+                <h6 style="text-align: justify;padding-right: 30px"> clouddrums.com's unique beats are tailored to your needs. The variety of kits allows musicians to jam to beats of virtually any genre.
+                    Jam to original beats played by your own personal studio drummer. </h6>
+            </td>
+
+            <td valign="top" align="left" style="width: 33%; ">
+                <h3>Freestyle and Train.</h3>
+                <h6 style="text-align: justify;padding-right: 30px"> Rappers can practice and freestyle to personalized beats that are one-of-a-kind.
+                    clouddrums.com has been used in recording and even as a training exercise for drummers in which they have to listen
+                    to a random beat and play it back. </h6>
+            </td>
+
+            <td valign="top" align="left" style="width: 33%;">
+
+                <h3>About Me.</h3>
+                <h6 style="text-align: justify;padding-right: 30px">clouddrums was created by Rishi Srivastava, an incoming Computer Engineering student at the University of Waterloo.<br>
+                    comments or concerns? contact me at rishi.srivastava98@gmail.com.</h6>
+            </td>
+
+        </tr>
+    </table>
+</div>
+
+<br><br><br>
+
+<footer>
+    <p style="display:inline-block;"> clouddrums.com - <p style="color: white; display: inline"> freestyle. jam. record. train.</p>
+    <p style="display: inline; float: right">© Rishi Srivastava</p></p>
+</footer>
+
+<script>
+    document.getElementById("nav01").innerHTML =
+            "<ul id='menu'>" +
+            "<li><a href='/home/'>Home</a></li>" +
+            "<li><a href='/about/'>About</a></li>" +
+            "</ul>";</script>
+</body>
+</html>
